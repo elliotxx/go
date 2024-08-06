@@ -1433,6 +1433,7 @@ func (cw *chunkWriter) writeHeader(p []byte) {
 	// before reading a response may deadlock in this case.
 	// This behavior has been present since CL 5268043 (2011), however,
 	// so it doesn't seem to be causing problems.
+	w.fullDuplex = true
 	if w.req.ContentLength != 0 && !w.closeAfterReply && !w.fullDuplex {
 		var discard, tooBig bool
 
